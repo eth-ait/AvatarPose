@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AvatarPose: Avatar-guided 3D Pose Estimation of Close Human Interaction from Sparse Multi-view Videos.">
+  <meta name="keywords" content="AvatarPose">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AvatarPose: Avatar-guided 3D Pose Estimation of Close Human Interaction from Sparse Multi-view Videos</title>
+
+
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <link rel="stylesheet" href="./static/css/dics.css">
+  <script src="./static/js/dics.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', domReady);
+    function domReady() {
+      for (const e of document.querySelectorAll(".b-dics")) {
+          new Dics({
+              container: e,  
+              textPosition: 'left',  
+              arrayBackgroundColorText: ['#FFFFFF', '#FFFFFF'],
+                arrayColorText: ['#000000', '#000000'],
+                linesColor: 'rgb(0,0,0)'
+          });
+      }
+    }
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">AvatarPose: Avatar-guided 3D Pose Estimation of Close Human Interaction from Sparse Multi-view Videos</h1>
+          <div class="column is-full_width">
+            <h2 class="title is-4">ECCV 2024</h2>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://ait.ethz.ch/people/zijian/">Feichi Lu*</a><sup>1</sup>,</span>
+            <span class="author-block">
+                <a href="https://ait.ethz.ch/people/zijian/">Zijian Dong*</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://is.mpg.de/~jyang">Jie Song</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ait.ethz.ch/people/hilliges/">Otmar Hilliges</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>ETH Zurich,</span>
+            <span class="author-block"><sup>2</sup>University of Tubingen</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="assets/paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/niP1YhJXEBE"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Medium Link.
+              <span class="link-block">
+                <a href="https://eth-ait.medium.com/animate-implicit-shapes-with-forward-skinning-c7ebbf355694"
+                    class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-medium-m"></i>
+                  </span>
+                  <span>Medium</span>
+                </a>
+              </span> -->
+              <!-- Blog Link. -->
+              <!-- <span class="link-block">
+                <a href="https://autonomousvision.github.io/snarf/"
+                    class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-blogger-b"></i>
+                  </span>
+                  <span>Blog</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/zj-dong/AG3D"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <span class="link-block">
+                <a href="assets/supplementary.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Supp Mat.</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <img src="assets/teaser.png" class="center"/>
+      <h2 class="subtitle has-text-centered">
+      
+We propose AvatarPose, a method for estimating the 3D poses and shapes of multiple closely interacting people from multi-view videos. To this end, we first reconstruct the avatar of each individual and leverage the learned personalized avatars as priors to refine poses via color and silhouette rendering loss. We alternate between avatar refinement and pose optimization to obtain the final pose estimation. 
+      
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Despite progress in human motion capture, existing multi-view methods often face challenges in estimating the 3D pose and shape of multiple closely interacting people. 
+            This difficulty arises from reliance on accurate 2D joint estimations, which are hard to obtain due to occlusions and body contact when people are in close interaction. 
+            To address this, we propose a novel method leveraging the personalized implicit neural avatar of each individual as a prior, which significantly improves the robustness and precision of this challenging pose estimation task. 
+            Concretely, the avatars are efficiently reconstructed via layered volume rendering from sparse multi-view videos. 
+            The reconstructed avatar prior allows for the direct optimization of 3D poses based on color and silhouette rendering loss, bypassing the issues associated with noisy 2D detections. 
+            To handle interpenetration, we propose a collision loss on the overlapping shape regions of avatars to add penetration constraints. Moreover, both 3D poses and avatars are optimized in an alternating manner. Our experimental results demonstrate state-of-the-art performance on several public datasets.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/y_T67l9j_TA?si=VZclJk62F-n7Zok6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section" id="method">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Method Overview</h2>
+    <img src="assets/pipeline.png"  height="250" class="center"/>
+    <p>
+      Given a dynamic scene captured by a sparse set of RGB cameras, our goal is to estimate the 3D pose and shape of multiple people even if they interact closely. 
+      To address this challenging task, our key idea is to first reconstruct the personalized avatar of each individual in the scene and leverage them as a strong prior to refine the appearance and pose alternately.
+    </p>
+
+    <h3 class="title">Multi-Avatar Prior Learning</h3>
+      <p>
+        We first introduce an efficient pipeline to create avatars of multiple people in a scene. 
+        Specifically, we leverage an accelerated neural radiance field to represent the shape and appearance of each individual in canonical space and deform it at an interactive rate. 
+        We then adapt layered volume rendering to our pipeline, which composites the rendering of avatars into one image, thus enabling direct learning from multi-view video inputs.
+      </p>
+
+      <h3 class="title">Avatar Guided Pose Optimization</h3>
+      <p>
+        Thanks to the learned avatar prior for each individual, we can enhance 3D pose optimization via a combination of RGB and silhouette rendering loss.
+        While previous work heavily relies on noisy 2D joint detection, we show that employing such pixel-wise color and silhouette information can largely increase precision and robustness. 
+        Moreover, a collision loss is introduced to avoid interpenetration. 
+        Finally, we alternate between avatar learning and pose optimization to get complete and accurate 3D human poses.  
+      </p>
+  </div>
+</section>
+
+
+<section class="section" id="results">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Results</h2>
+    <div class="column is-full-width">
+      <div class="columns is-centered">
+        <div class="column content">
+
+          <div style="display: flex; margin: 0 auto;">
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="assets/hug1.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="assets/hug2.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div style="display: flex; margin: 0 auto;">
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="assets/fight1.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="assets/talk2.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div style="display: flex; margin: 0 auto;">
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="assets/pose1.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="assets/push1.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{lu2024avatarpose,
+      title={AvatarPose: Avatar-guided 3D Pose Estimation of Close Human Interaction from Sparse Multi-view Videos},
+      author={Feichi Lu, Zijian Dong, Jie Song, Otmar Hilliges},
+      booktitle={ECCV},
+      year={2024}
+    }</code></pre>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This webpage is built with the template from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>. We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
