@@ -1,0 +1,70 @@
+_target_: AvatarPose.datasets.data_base.BaseDataModule
+name: hi4d
+subject: 14_talk14
+gender: neutral
+opt:
+  root: /home/username/Hi4D_AvatarPose/pair14_talk14
+  img_size: [640, 470]
+  start_frame: 9
+  num_workers: 4
+  vis_dataset: ${model.opt.vis_dataset}
+  switch_human: False
+  keypoints3d_args:
+      gt_root: skel19_gt
+      init_root: ${model.opt.init_kpts}
+  smpl_args:
+      gt_root: smpl_gt
+      init_root: ${model.opt.init_smpl} # if want to use gt smpl to tain avatar, set poses
+  image_args:
+      root: images
+      ext: .jpg
+      scale: 1.0
+      undis: True
+      train_white_bkgd: true # train with white background color
+      nv_scale: 1.0
+  mask_args:
+      root: ${model.opt.init_mask}
+      undis: True
+      mask_arm_root: ${model.opt.init_mask_arm}
+      per_obj: ${model.opt.mask_per_obj}
+  camera_args:
+      method: none
+      H: 640
+      W: 470
+      center: [0., 0., 1.1] # [0., 0., 1.]
+      radius: 4.5
+      focal: 1120.0
+      up: 'z'
+      allstep: 800
+      loop: True
+  demo_args:
+      mode: scripts
+      stages:
+          start:
+              frame: [56, 57, 1]
+              view: [0, 800, 10]
+              object_keys: ['human_0', 'human_1']
+split_opt:
+  train_avatar:
+    ranges: [9, 149, 1]
+    camnames: [ '4', '16', '28', '40', '52', '64', '76', '88']
+    sampler: ${sampler_avatar}
+  train_avatar_refine:
+    ranges: [9, 29, 1]
+    camnames: [ '4', '16', '28', '40', '52', '64', '76', '88']
+    sampler: ${sampler_avatar}
+  train_smpl:
+    ranges: [9, 149, 1]
+    camnames: [ '4', '16', '28', '40', '52', '64', '76', '88']
+    sampler: ${sampler_smpl}
+  train_arm:
+    ranges: [9, 149, 1]
+    camnames: [ '4', '16', '28', '40', '52', '64', '76', '88']
+    sampler: ${sampler_smpl}
+  val: 
+    ranges: [9, 149, 1]
+    object_keys: ['human_0', 'human_1']
+    camnames: ['4', '28', '52', '76']
+  test: 
+    ranges: [56, 57, 1]
+    camnames: [ '4', '16', '28', '40', '52', '64', '76', '88']

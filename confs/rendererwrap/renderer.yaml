@@ -1,0 +1,6 @@
+_target_: AvatarPose.models.render_base.BaseRenderer
+chunk: 32768
+white_bkgd: False
+use_occupancy: True
+N_samples: 64
+return_extra: True

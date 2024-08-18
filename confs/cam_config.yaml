@@ -1,0 +1,10 @@
+  camera_args:
+      method: none
+      H: 1280
+      W: 940
+      center: [0, 0, 1] # [0., 0., 0.]
+      radius: 3.5
+      focal: 1120.0
+      up: 'z'
+      # allstep: 800
+      # loop: True

@@ -1,0 +1,19 @@
+_target_: AvatarPose.utils.loss.LossWrapper
+opt_loss:
+  loss_maskverts:
+    _target_: AvatarPose.utils.loss.LossMaskVertice
+    weight: 1.0
+
+opt_reg:
+  reg_pose:
+    _target_: AvatarPose.utils.loss.RegPose
+    weight: 0
+  reg_angle:
+    _target_: AvatarPose.utils.loss.RegAngle
+    weight: 0
+  reg_smooth:
+    _target_: AvatarPose.utils.loss.RegSmooth
+    weight: 0
+    v_weight: 1
+    a_weight: 1
+    tracking: ${model.opt.tracking}

@@ -1,0 +1,36 @@
+_target_: AvatarPose.utils.loss.LossWrapper
+opt_loss:
+  loss_rgb:
+    _target_: AvatarPose.utils.loss.LossRGB
+    name: 'huber'
+    weight: 1.0
+  loss_alpha:
+    _target_: AvatarPose.utils.loss.LossAlpha
+    name: 'mse'
+    weight: 0.1
+    opt:
+      end_step: 1e8
+  loss_lpips:
+    _target_: AvatarPose.utils.loss.LossLpips
+    weight: 0.01
+  # loss_instance:
+  #   _target_: AvatarPose.utils.loss.LossInstance
+  #   name: mse
+  #   weight: 0.01
+
+opt_reg:
+  reg_alpha:
+    _target_: AvatarPose.utils.loss.RegAlpha
+    weight: 0.1
+  reg_weight:
+    _target_: AvatarPose.utils.loss.RegWeight
+    weight: 0.1
+  reg_depth:
+    _target_: AvatarPose.utils.loss.RegDepth
+    weight: 0.01
+  reg_instance:
+    _target_: AvatarPose.utils.loss.RegInstance
+    weight: 0.001
+    opt:
+      start_epoch: 10
+      end_epoch: 500

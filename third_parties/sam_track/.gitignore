@@ -1,0 +1,18 @@
+.vscode
+ckpt
+src
+Pytorch-Correlation-extension
+assets/*masks
+assets/*mp4
+# assets/*zip
+assets/*gif
+*.pyc
+debug
+cym_utils
+result
+results
+/tracking_results
+/aot/results
+/aot/pretrain_models
+/aot/datasets
+

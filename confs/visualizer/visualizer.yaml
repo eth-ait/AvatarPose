@@ -1,0 +1,3 @@
+_target_: AvatarPose.vis.vis_img.Visimg
+root: 'vis_avatar'
+task: ${model.opt.vis_split}

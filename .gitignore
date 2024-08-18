@@ -1,0 +1,13 @@
+data/
+outputs/
+__pycache__/
+debug/
+results_hi4d*/
+*.pth
+output/
+output_body25/
+slurm*
+output*
+videos/
+mask/
+run/

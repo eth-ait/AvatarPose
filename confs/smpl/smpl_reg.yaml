@@ -1,0 +1,5 @@
+_target_: instant_avatar.models.structures.body_model_param.SMPLParamRegression
+use_smpl_init: ${model.opt.use_smpl_init}
+vis_log_name: ${model.opt.vis_log_name}
+with_time_embed: ${model.opt.with_time_embed}
+pose_seperate: ${model.opt.pose_seperate}

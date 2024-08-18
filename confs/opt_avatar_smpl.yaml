@@ -1,0 +1,91 @@
+defaults:
+  - dataset: hi4d/hi4d
+  - networks: composed
+  - rendererwrap: renderer
+  - visualizer: visualizer
+  - network: ngp
+  - deformer: smpl
+  - smpl: smpl_reg
+  - renderer: raymarcher_acc
+  - sampler_avatar: patch
+  - sampler_smpl: edge
+  - loss_avatar: loss_avatar
+  - loss_smpl: loss_smpl  
+  - _self_
+
+hydra:
+  run:
+    dir: "/home/username/outputs/${dataset.name}/${experiment}/${dataset.subject}" # Euler
+
+model:
+  _target_: AvatarPose.models.plwrap.plwrapper
+  opt:
+    networks: ${networks}
+    rendererwrap: ${rendererwrap}
+    visualizer: ${visualizer}
+    loss_avatar: ${loss_avatar}
+    loss_smpl: ${loss_smpl}
+    smpl_init: False # use smpl to init the density field
+    use_latent_time: False
+    use_smpl_init: False # use the smpl_init value instead of updating smpl
+
+    # fixed params
+    init_mask: mask_sta
+    mask_per_obj: False
+    init_mask_arm: mask_sta_arm
+    init_smpl: smpl_init # the initialized smpl folder
+    init_kpts: skel19_fit
+
+    # visualization
+    vis_dataset: false
+    pose_vis_results: ['kpts']
+    vis_split: train # val, nv, used for directory control
+    vis_log_name: est_kpts_opt
+    
+    # change params
+    joint_opt: False
+    base: eavatar
+    load_avatar: False
+    load_smpl: False
+    tracking: True # update all smpl parameters
+    pose_seperate: False
+    with_time_embed: False
+    SMPL_lr:
+      pose: 1e-3
+      pose_0: 1e-3
+      pose_1: 1e-4 # arm lr
+      betas: 1e-5
+      transl: 1e-5
+      rot: 1e-5
+    optimizer:
+      lr: 1e-3
+      betas: [0.9, 0.99]
+      eps: 1e-15
+
+    stages:
+      avatar: []
+      arefine: [] 
+      avatar_betas: []
+      arefine_betas: []
+      pose: []
+      arm: []
+      transl: []
+      rot: []
+
+    
+
+project: "SNARF_NGP"
+experiment: "baseline"
+seed: 42
+resume: True
+
+train:
+  precision: 32
+  max_epochs: 180
+  check_val_every_n_epoch: 1
+  # val_check_interval: 0.5
+
+checkpoint:
+  save_top_k: -1
+  every_n_epochs: 10
+  save_on_train_epoch_end: True

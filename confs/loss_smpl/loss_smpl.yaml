@@ -1,0 +1,36 @@
+_target_: AvatarPose.utils.loss.LossWrapper
+opt_loss:
+  loss_rgb:
+    _target_: AvatarPose.utils.loss.LossRGB
+    name: 'huber'
+    weight: 10.0
+  loss_alpha:
+    _target_: AvatarPose.utils.loss.LossAlpha
+    name: 'ce'
+    weight: 5e-2
+    opt:
+      end_step: 1e8
+  loss_keypoints3d:
+    _target_: AvatarPose.utils.loss.LossKeypoints3d
+    name: mpjpe
+    weight: 0
+
+opt_reg:
+  reg_pose:
+    _target_: AvatarPose.utils.loss.RegPose
+    weight: 1e-3
+  reg_angle:
+    _target_: AvatarPose.utils.loss.RegAngle
+    weight: 1e-2
+  reg_penetration:
+    _target_: AvatarPose.utils.loss.RegPenetration
+    weight: 5e-3
+    opt:
+      start_epoch: 160
+      end_epoch: 180
+  reg_smooth:
+    _target_: AvatarPose.utils.loss.RegSmooth
+    weight: 1
+    v_weight: 1
+    a_weight: 1
+    tracking: ${model.opt.tracking}

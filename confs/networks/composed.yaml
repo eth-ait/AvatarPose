@@ -1,0 +1,7 @@
+_target_: AvatarPose.models.compose.ComposedModel
+networks:
+  _target_: AvatarPose.models.instantavatar.InstantAvatar
+  network: ${network}
+  renderer: ${renderer}
+  deformer: ${deformer}
+  smpl: ${smpl}

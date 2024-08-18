@@ -1,0 +1,3 @@
+_target_: instant_avatar.models.structures.body_model_param.SMPLParamEmbedding_2
+tracking: ${model.opt.tracking}
+use_smpl_init: ${model.opt.use_smpl_init}

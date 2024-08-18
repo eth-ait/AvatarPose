@@ -1,0 +1,5 @@
+_target_: instant_avatar.utils.sampler.GradientSampler
+threshold: 0.05
+num_sample: 8192
+ratio_gradient: 0.4
+ratio_mask: 0.5
