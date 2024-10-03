@@ -1,6 +1,6 @@
 # AvatarPose: Avatar-guided 3D Pose Estimation of Close Human Interaction from Sparse Multi-view Videos
 
-## [Paper](https://arxiv.org/abs/2408.02110) | [Supplementary](assets/supplementary.pdf) | [Video](https://www.youtube.com/watch?v=y_T67l9j_TA) | [Project Page](feichilu.github.io/AvatarPose/)
+## [Paper](https://arxiv.org/abs/2408.02110) | [Supplementary](assets/supplementary.pdf) | [Video](https://www.youtube.com/watch?v=y_T67l9j_TA) | [Project Page](https://eth-ait.github.io/AvatarPose/)
 
 <img src="assets/teaser.png" /> 
 
